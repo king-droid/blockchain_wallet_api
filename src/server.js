@@ -297,7 +297,7 @@ function start (options) {
   var handleStartError = function (err) { winston.error(err.message) }
 
   var server = ssl ? https.createServer(sslOpts, app) : http.createServer(app)
-  server.listen(options.port, options.bind, initApp).on('error', handleStartError)
+  server.listen(process.env.PORT || 3000, options.bind, initApp).on('error', handleStartError)
 
   return deferred.promise
 }
